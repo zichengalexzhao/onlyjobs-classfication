@@ -1,0 +1,136 @@
+# OnlyJobs Classification Configuration
+
+# Data Collection Settings
+data_collection:
+  # Gmail API settings
+  gmail:
+    credentials_path: "config/gmail_credentials.json"
+    token_path: "config/token.json"
+    scopes:
+      - "https://www.googleapis.com/auth/gmail.readonly"
+  
+  # OpenAI API settings (for initial data labeling)
+  openai:
+    api_key_env: "OPENAI_API_KEY"  # Environment variable name
+    model: "gpt-3.5-turbo"
+    max_tokens: 100
+    temperature: 0.0
+  
+  # Collection parameters
+  sampling:
+    max_budget_usd: 5.0
+    target_positive_samples: 1000
+    target_negative_samples: 1000
+    max_emails_to_process: 10000
+    sample_seed: 42
+
+# Feature Engineering Settings
+feature_engineering:
+  # TF-IDF settings
+  tfidf:
+    max_features: 1000
+    ngram_range: [1, 2]
+    min_df: 2
+    max_df: 0.95
+    stop_words: "english"
+  
+  # Text preprocessing
+  preprocessing:
+    lowercase: true
+    remove_html: true
+    normalize_whitespace: true
+  
+  # Feature types to extract
+  feature_types:
+    text_stats: true
+    keyword_features: true
+    structural_features: true
+    tfidf_features: true
+
+# Model Training Settings
+model_training:
+  # Cross-validation
+  cross_validation:
+    n_splits: 10
+    n_repeats: 3
+    shuffle: true
+    random_state: 42
+  
+  # Model parameters
+  models:
+    random_forest:
+      n_estimators: 100
+      max_depth: 20
+      class_weight: "balanced"
+      random_state: 42
+    
+    gradient_boosting:
+      n_estimators: 100
+      max_depth: 10
+      learning_rate: 0.1
+      random_state: 42
+    
+    svm:
+      kernel: "rbf"
+      class_weight: "balanced"
+      probability: true
+      random_state: 42
+    
+    logistic_regression:
+      max_iter: 1000
+      class_weight: "balanced"
+      random_state: 42
+  
+  # Training parameters
+  training:
+    test_size: 0.1
+    validation_size: 0.2
+    random_state: 42
+
+# Deployment Settings
+deployment:
+  # API settings
+  api:
+    host: "0.0.0.0"
+    port: 5000
+    debug: false
+    workers: 4
+  
+  # Model serving
+  model:
+    model_path: "data/models/best_model.pkl"
+    feature_extractors_path: "data/models/feature_extractors.pkl"
+    cache_predictions: true
+    max_cache_size: 1000
+  
+  # Monitoring
+  monitoring:
+    log_predictions: true
+    log_level: "INFO"
+    metrics_enabled: true
+
+# Logging Settings
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  handlers:
+    - type: "console"
+    - type: "file"
+      filename: "logs/onlyjobs.log"
+      max_size: "10MB"
+      backup_count: 5
+
+# Data Paths
+paths:
+  # Data directories
+  data_dir: "data"
+  raw_data_dir: "data/raw"
+  processed_data_dir: "data/processed"
+  models_dir: "data/models"
+  results_dir: "data/results"
+  
+  # Log directory
+  logs_dir: "logs"
+  
+  # Configuration directory
+  config_dir: "config"
