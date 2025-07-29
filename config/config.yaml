@@ -5,7 +5,7 @@ data_collection:
   # Gmail API settings
   gmail:
     credentials_path: "config/gmail_credentials.json"
-    token_path: "config/token.json"
+    token_path: "config/gmail_token.json"
     scopes:
       - "https://www.googleapis.com/auth/gmail.readonly"
   
