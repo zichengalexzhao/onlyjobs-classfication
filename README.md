@@ -10,10 +10,11 @@
 
 OnlyJobs Classification is a machine learning system that accurately identifies job-related emails from regular email content. It provides:
 
-- **90%+ accuracy** with Random Forest classification
+- **90%+ recall** with optimized Random Forest classification (minimizes missed job emails)
 - **2000x faster** than LLM-based approaches (0.001s vs 2s per email)
-- **100% cost savings** (no API calls required)
-- **Offline capability** with no external dependencies
+- **100% cost savings** (no API calls required after training)
+- **Advanced feature engineering** with job pattern detection and domain analysis
+- **High recall optimization** - prioritizes catching all job emails over precision
 
 ## 🚀 Quick Start
 
@@ -32,10 +33,13 @@ cp config/config.example.yaml config/config.yaml
 # Collect training data
 python scripts/collect_data.py --target-samples 2000
 
-# Train models
+# Train optimized model
 python scripts/train_models.py
 
-# Run classification
+# Test on real Gmail (requires OAuth setup)
+python scripts/test_optimized_gmail.py
+
+# Classify individual emails
 python scripts/classify_email.py --email "Your email content here"
 ```
 
