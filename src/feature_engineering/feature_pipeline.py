@@ -224,7 +224,7 @@ class EmailFeatureExtractor:
         
         return names
     
-    def save_feature_extractors(self, filepath="../data/ml_models/feature_extractors.pkl"):
+    def save_feature_extractors(self, filepath="data/models/feature_extractors.pkl"):
         """Save trained feature extractors."""
         os.makedirs(os.path.dirname(filepath), exist_ok=True)
         
@@ -241,7 +241,7 @@ class EmailFeatureExtractor:
         
         print(f"💾 Feature extractors saved to: {filepath}")
     
-    def load_feature_extractors(self, filepath="../data/ml_models/feature_extractors.pkl"):
+    def load_feature_extractors(self, filepath="data/models/feature_extractors.pkl"):
         """Load trained feature extractors."""
         if os.path.exists(filepath):
             with open(filepath, 'rb') as f:
@@ -301,9 +301,9 @@ def process_dataset_features():
         print(f"✅ {split_name}: {features.shape[0]} samples, {features.shape[1]} features")
     
     # Save processed features
-    os.makedirs("../data/ml_models", exist_ok=True)
+    os.makedirs("data/models", exist_ok=True)
     
-    with open("../data/ml_models/processed_features.pkl", 'wb') as f:
+    with open("data/models/processed_features.pkl", 'wb') as f:
         pickle.dump(processed_data, f)
     
     # Save feature extractors
@@ -317,11 +317,11 @@ def process_dataset_features():
         'processing_date': datetime.now().isoformat()
     }
     
-    with open("../data/ml_models/feature_analysis.json", 'w') as f:
+    with open("data/models/feature_analysis.json", 'w') as f:
         json.dump(feature_analysis, f, indent=2)
     
     print(f"\n🎉 Feature Processing Complete!")
-    print(f"📁 Saved to: ../data/ml_models/")
+    print(f"📁 Saved to: data/models/")
     print(f"   - processed_features.pkl (features & labels)")
     print(f"   - feature_extractors.pkl (trained extractors)")
     print(f"   - feature_analysis.json (feature metadata)")

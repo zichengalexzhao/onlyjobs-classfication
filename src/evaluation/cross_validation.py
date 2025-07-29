@@ -20,7 +20,7 @@ def load_data():
     """Load training data quickly."""
     print("📂 Loading data...")
     
-    data_path = "../data/ml_models/processed_features.pkl"
+    data_path = "data/models/processed_features.pkl"
     with open(data_path, 'rb') as f:
         data = pickle.load(f)
     
@@ -85,8 +85,8 @@ def rapid_cv():
     print(f"   F1-Score: {best_metrics['f1_mean']:.4f} ± {best_metrics['f1_std']:.4f}")
     
     # Save quick results
-    os.makedirs("../data/ml_models", exist_ok=True)
-    with open("../data/ml_models/rapid_cv_results.json", 'w') as f:
+    os.makedirs("data/models", exist_ok=True)
+    with open("data/models/rapid_cv_results.json", 'w') as f:
         json.dump({
             'date': datetime.now().isoformat(),
             'best_model': best_name,

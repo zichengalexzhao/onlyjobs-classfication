@@ -65,7 +65,7 @@ class ModelTrainer:
         """Load preprocessed features and labels."""
         print("\n📂 Loading processed data...")
         
-        data_path = "../data/ml_models/processed_features.pkl"
+        data_path = "data/models/processed_features.pkl"
         if not os.path.exists(data_path):
             raise FileNotFoundError(f"Processed data not found: {data_path}")
         
@@ -247,16 +247,16 @@ class ModelTrainer:
         """Save trained models and results."""
         print(f"\n💾 Saving Models and Results...")
         
-        os.makedirs("../data/ml_models", exist_ok=True)
+        os.makedirs("data/models", exist_ok=True)
         
         # Save best model
         if self.best_model:
-            with open("../data/ml_models/best_model.pkl", 'wb') as f:
+            with open("data/models/best_model.pkl", 'wb') as f:
                 pickle.dump(self.best_model, f)
             print(f"✅ Best model saved: {self.best_model_name}")
         
         # Save all trained models
-        with open("../data/ml_models/all_models.pkl", 'wb') as f:
+        with open("data/models/all_models.pkl", 'wb') as f:
             pickle.dump(trained_models, f)
         
         # Save results
@@ -271,10 +271,10 @@ class ModelTrainer:
             }
         }
         
-        with open("../data/ml_models/training_results.json", 'w') as f:
+        with open("data/models/training_results.json", 'w') as f:
             json.dump(training_results, f, indent=2)
         
-        print(f"✅ Results saved to ../data/ml_models/")
+        print(f"✅ Results saved to data/models/")
     
     def generate_model_summary(self):
         """Generate a summary of model performance."""
