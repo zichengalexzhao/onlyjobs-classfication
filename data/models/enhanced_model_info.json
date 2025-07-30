@@ -1,0 +1,30 @@
+{
+  "name": "Enhanced Random Forest with Low Threshold",
+  "features": "Base + Enhanced Job Patterns + Workday Domains",
+  "threshold": 0.1,
+  "optimization": "Minimize False Negatives",
+  "version": "3.0",
+  "performance": {
+    "accuracy": 0.755,
+    "precision": 0.6619718309859155,
+    "recall": 0.9894736842105263,
+    "f1": 0.7932489451476794,
+    "false_negatives": 1,
+    "false_positives": 48,
+    "threshold": 0.1,
+    "improvement_in_fn": 6,
+    "confusion_matrix": {
+      "tp": 94,
+      "fp": 48,
+      "tn": 57,
+      "fn": 1
+    }
+  },
+  "features_total": 1028,
+  "training_samples": 200,
+  "class_weights": {
+    "0": 1.0,
+    "1": 4.0
+  },
+  "optimization_target": "Minimize False Negatives (missed job emails)"
+}
