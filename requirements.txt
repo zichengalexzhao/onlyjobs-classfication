@@ -1,35 +1,18 @@
-# Core ML and Data Processing
-scikit-learn>=1.7.0
-numpy>=1.24.0
-pandas>=2.0.0
-scipy>=1.10.0
-
-# Email Processing
-google-api-python-client>=2.0.0
-google-auth-oauthlib>=1.0.0
-google-auth-httplib2>=0.1.0
-
-# Environment and Configuration
-python-dotenv>=1.0.0
-pyyaml>=6.0
+# Core ML and Data Processing Dependencies
+scikit-learn>=1.0.0
+numpy>=1.20.0
+pandas>=1.3.0
+xgboost>=1.5.0
 
 # Feature Engineering
-joblib>=1.3.0
+joblib>=1.0.0
 
-# Optional: Enhanced NLP (uncomment if needed)
-# nltk>=3.8
-# spacy>=3.6.0
+# Configuration (optional)
+pyyaml>=6.0
 
-# Development and Testing
-pytest>=7.0.0
-pytest-cov>=4.0.0
+# Optional: API Framework for production deployment
+# flask>=2.0.0
+# gunicorn>=20.0.0
 
-# API Framework (for deployment)
-flask>=2.3.0
-gunicorn>=21.0.0
-
-# Monitoring and Logging
-loguru>=0.7.0
-
-# Data Validation
-pydantic>=2.0.0
+# Optional: Enhanced logging for production monitoring  
+# loguru>=0.6.0

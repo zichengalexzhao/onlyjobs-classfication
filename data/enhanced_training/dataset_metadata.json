@@ -1,0 +1,24 @@
+{
+  "creation_date": "2025-08-27T00:52:15.955386",
+  "total_emails": 2000,
+  "job_related_emails": 1000,
+  "non_job_related_emails": 1000,
+  "train_size": 1400,
+  "val_size": 400,
+  "test_size": 200,
+  "feature_format_version": "2.0",
+  "api_cost_usd": 4.0680000000000005,
+  "api_calls_made": 2034,
+  "features": [
+    "sender",
+    "sender_email",
+    "date",
+    "parsed_datetime",
+    "date_only",
+    "week",
+    "month",
+    "year",
+    "days_since",
+    "email_body"
+  ]
+}
