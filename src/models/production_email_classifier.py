@@ -222,25 +222,27 @@ class ProductionEmailClassifier:
     def _extract_features(self, email_data):
         """Extract features using the loaded feature pipeline."""
         try:
-            # If we have the actual feature extractor object
+            # First priority: Use the complete GeneralizedEmailFeatureExtractor object
             if hasattr(self.feature_pipeline, 'extract_all_features'):
                 # Convert to DataFrame for feature extraction
                 df = pd.DataFrame([email_data])
                 features, _ = self.feature_pipeline.extract_all_features(df, fit=False)
                 return features[0]
             
-            # If feature pipeline is a dictionary (components saved separately)
+            # Second priority: If feature pipeline is a dictionary (legacy format)
             elif isinstance(self.feature_pipeline, dict):
+                print("WARNING: Using legacy dictionary-based feature extraction. Please update pipeline.")
                 return self._extract_features_from_components(email_data)
             
             else:
-                # Return basic feature set for compatibility
+                # Last resort: basic features for compatibility
+                print("WARNING: Using basic feature extraction fallback. Predictions may be inaccurate.")
                 return self._extract_basic_features(email_data)
                 
         except Exception as e:
-            # If feature pipeline fails, try alternative approach
-            print(f"Feature extraction failed: {e}")
-            # Return minimal feature set for basic functionality
+            # If feature pipeline fails, provide detailed error information
+            print(f"ERROR: Feature extraction failed with complete pipeline: {e}")
+            print("Falling back to basic feature extraction. Predictions may be inaccurate.")
             return self._extract_basic_features(email_data)
     
     def _extract_basic_features(self, email_data):
