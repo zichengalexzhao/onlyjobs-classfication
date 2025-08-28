@@ -19,9 +19,11 @@ pip-log.txt
 pip-delete-this-directory.txt
 
 # Data files
-data/models/*.pkl
 data/collected/
 *.json.backup
+
+# Temporary model files (keep trained production models)
+# data/models/*.pkl
 
 # IDEs
 .vscode/
